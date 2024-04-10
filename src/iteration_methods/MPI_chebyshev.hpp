@@ -1,5 +1,4 @@
-#ifndef SLAE__MPI_CHEBYSHEV_HPP
-#define SLAE__MPI_CHEBYSHEV_HPP
+#pragma once
 
 #include <vector>
 #include "../CSR_matrix.hpp"
@@ -44,7 +43,3 @@ std::pair<std::vector<T>, std::pair<double,std::size_t>> chebyshev_mpi(const Mat
     }
     return std::make_pair(x1, std::make_pair(mod(r),it));;
 }
-
-
-
-#endif //SLAE__MPI_CHEBYSHEV_HPP

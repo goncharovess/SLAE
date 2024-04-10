@@ -1,9 +1,8 @@
+#pragma once
+
 #include <iostream>
 #include "../CSR_matrix.hpp"
 #include "../Dense_matrix.hpp"
-
-#ifndef SLAE__SIMPLE_ITERATION_HPP
-#define SLAE__SIMPLE_ITERATION_HPP
 
 template <typename T>
 std::vector<T> MPI(const Matrix<T> &A, const std::vector<T> &b,const std::vector<T> &x, T tolerance, T tau){
@@ -17,6 +16,3 @@ std::vector<T> MPI(const Matrix<T> &A, const std::vector<T> &b,const std::vector
     }
     return x1;
 }
-
-
-#endif //SLAE__SIMPLE_ITERATION_HPP

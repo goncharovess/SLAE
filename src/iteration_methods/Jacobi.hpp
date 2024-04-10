@@ -1,5 +1,4 @@
-#ifndef SLAE__JACOBI_HPP
-#define SLAE__JACOBI_HPP
+#pragma once
 
 #include <iostream>
 #include "../CSR_matrix.hpp"
@@ -17,6 +16,3 @@ std::vector<T> Jacobi(const Matrix<T> &A, const std::vector<T> &b, const std::ve
     }
     return x1;
 }
-
-
-#endif //SLAE__JACOBI_HPP

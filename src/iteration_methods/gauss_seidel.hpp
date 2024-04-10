@@ -1,5 +1,5 @@
-#ifndef SLAE__GAUSS_SEIDEL_HPP
-#define SLAE__GAUSS_SEIDEL_HPP
+#pragma once
+
 #include <iostream>
 #include "../CSR_matrix.hpp"
 #include "../Dense_matrix.hpp"
@@ -27,5 +27,3 @@ std::vector<T> Gauss_seidel(const Matrix<T> &A, const std::vector<T> &b, const s
     }
     return x0;
 }
-
-#endif //SLAE__GAUSS_SEIDEL_HPP
