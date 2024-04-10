@@ -12,21 +12,31 @@ class Matrix{
 private:
     std::vector<T> values;
     std::vector<int> columns;
-    std::vector<int> rows = {0};
+    std::vector<int> rows;
 public:
-    Matrix(const std::map<std::pair<int, int>,T> &v){
-        int non_zero = 0;
-        for(int i = 0; i < ((--v.end())->first).first+1; i++){
-            for(int j = 0; j < ((--v.end())->first).second+1; j++){
-                if (v.at({i,j}) != 0) {
-                    values.push_back(v.at({i,j}));
-                    columns.push_back(j);
-                    non_zero++;
-                }
-            }
-            rows.push_back(non_zero);
-        }
-    }
+    Matrix(const std::vector<T> &data, int width) : rows(data.size() / width + 1){
+	int len = 0;
+	for(T value : data){
+		if(value != 0){
+			len++;
+		}
+	}
+	this->values.reserve(len);
+	this->columns.reserve(len);
+	this->rows[0] = 0;
+	int count = 0;
+	for(int i = 0; i < data.size(); i++){
+		if(data[i] != 0){
+			this->values.push_back(data[i]);
+			this->columns.push_back(i % width);
+			count++;
+		}
+		if(i % width == width - 1){
+			this->rows[i / width + 1] = count;
+		}
+	}
+}
+
     ~Matrix() = default;
     const std::vector<T>& get_values() const {return values;}
     const std::vector<int>& get_columns() const {return columns;}
@@ -40,7 +50,7 @@ public:
         return 0;
     }
     std::vector<T> multiply(const std::vector<T> &x) const{
-        std::vector<T> res(x.size(), 0);
+        std::vector<T> res(rows.size()-1, 0);
         for (int i = 0; i < x.size(); i++) {
             for (int j = rows[i]; j < rows[i + 1]; j++)
                 res[i] += values[j] * x[columns[j]];

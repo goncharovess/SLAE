@@ -101,13 +101,18 @@ std::vector<T> operator * (const std::vector<T>&x, Scalar num){
     return res;
 }
 
-template<typename T, typename Scalar>
-std::vector<T> operator * (Scalar num, const std::vector<T>&x){
-    std::vector<T> res;
-    for(int i = 0; i < x.size(); i++){
-        res.push_back(x[i]*num);
-    }
-    return res;
+template<typename T>
+std::vector<T> operator*(const std::vector<T> &v, double n){
+	std::vector<T> ret = std::vector<T>(v.size());
+	for(size_t i = 0; i < v.size(); i++){
+		ret[i] = n * v[i];
+	}
+	return ret;
+}
+
+template<typename T>
+std::vector<T> operator*(double n, const std::vector<T> &v){
+	return v * n;
 }
 template<typename T, typename Scalar>
 std::vector<T> operator / (const std::vector<T>& x, Scalar num){
@@ -119,7 +124,7 @@ std::vector<T> operator / (const std::vector<T>& x, Scalar num){
 }
 
 template<typename T>
-std::vector<T> operator * (const Dense_matrix<T> &A, const std::vector<T>&x){
+std::vector<T> operator* (const Dense_matrix<T> &A, const std::vector<T>&x){
     std::vector<T> res(x.size());
     for (int i = 0; i < x.size(); i++) {
         for (int j = 0; j < x.size(); j++) {

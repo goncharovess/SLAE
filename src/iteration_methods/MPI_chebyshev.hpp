@@ -6,7 +6,7 @@
 #include <bits/stdc++.h>
 
 template <typename T>
-std::pair<std::vector<T>, std::pair<double,std::size_t>> chebyshev_mpi(const Matrix<T> &A, const std::vector<T> &b,const std::vector<T> &x0, T tolerance, std::size_t roots,
+std::vector<T> chebyshev_mpi(const Matrix<T> &A, const std::vector<T> &b,const std::vector<T> &x0, T tolerance, std::size_t roots, int Nmax,
                              double lambda_min, double lambda_max){
 
     std::size_t n = pow(2,roots);
@@ -34,12 +34,12 @@ std::pair<std::vector<T>, std::pair<double,std::size_t>> chebyshev_mpi(const Mat
     std::vector<T> x1 = x0;
     std::vector<T> r = A.multiply(x1) - b;
     std::size_t  it = 0;
-    while(mod(r) > tolerance){
+    while(mod(r) > tolerance and it < Nmax){
         for(auto i = 0; i < root_num.size(); i++) {
             x1 = x1 - r * (1 / x[root_num[i]]);
             r = A.multiply(x1) - b;
             it++;
         }
     }
-    return std::make_pair(x1, std::make_pair(mod(r),it));;
+    return x1;
 }

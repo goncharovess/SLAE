@@ -1,5 +1,4 @@
 #pragma once
-
 #include <iostream>
 #include "../CSR_matrix.hpp"
 #include "../Dense_matrix.hpp"
@@ -41,14 +40,13 @@ std::vector<T> sim_gauss_zeidel_iteration(const Matrix<T> &A, const std::vector<
 
 
 template <typename T>
-std::vector<T> sim_gauss_zeidel(const Matrix<T> &A, const std::vector<T> &b, const std::vector <T> &x, T tolerance){
+std::vector<T> sim_gauss_zeidel(const Matrix<T> &A, const std::vector<T> &b, const std::vector <T> &x, T tolerance, int Nmax){
     std::vector<T> x0 = x;
     std::vector<T> r = A.multiply(x0)-b;
     int n = 0;
-    while(mod(r) > tolerance){
-        x0 = SOR_iteration(A,b,x0);
+    while(mod(r) > tolerance and n < Nmax){
+        x0 = sim_gauss_zeidel_iteration(A,b,x0);
         r = A.multiply(x0)-b;
-        file << mod(r) << " " << n << std::endl;
         n++;
     }
     return x0;

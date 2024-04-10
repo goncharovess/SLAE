@@ -5,12 +5,12 @@
 #include "../Dense_matrix.hpp"
 
 template <typename T>
-std::vector<T> Gauss_seidel(const Matrix<T> &A, const std::vector<T> &b, const std::vector <T> &x, T tolerance){
+std::vector<T> Gauss_seidel(const Matrix<T> &A, const std::vector<T> &b, const std::vector <T> &x, T tolerance, int Nmax){
     std::vector<T> x0 = x;
     T diag_el;
     std::vector<T> r = A.multiply(x)-b;
     int n = 0;
-    while(mod(r) > tolerance){
+    while(mod(r) > tolerance and n < Nmax){
         for(int i = 0 ; i < x.size(); i++){
             x0[i] = b[i];
             for(int j = A.get_rows()[i]; j < A.get_rows()[i+1]; j++){
