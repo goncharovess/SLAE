@@ -1,5 +1,4 @@
-#ifndef SLAE__HOUSEHOLDER_HPP
-#define SLAE__HOUSEHOLDER_HPP
+#pragma once
 
 #include "../src/Dense_matrix.hpp"
 #include <iostream>
@@ -62,5 +61,3 @@ std::pair<Dense_matrix<T>, Dense_matrix<T>> Householder(const Dense_matrix<T> &M
     }
     return std::make_pair(Q,R);
 }
-
-#endif //SLAE__HOUSEHOLDER_HPP

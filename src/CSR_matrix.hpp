@@ -1,5 +1,4 @@
-#ifndef SLAE_CSR_MATRIX_HPP
-#define SLAE_CSR_MATRIX_HPP
+#pragma once
 
 #include <iostream>
 #include <utility>
@@ -76,7 +75,3 @@ std::vector<T> inverse_diagonal(const Matrix <T> &A, int dim1, int dim2){
 
     return diag;
 }
-
-
-
-#endif //SLAE_CSR_MATRIX_HPP

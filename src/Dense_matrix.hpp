@@ -1,5 +1,4 @@
-#ifndef SLAE__DENSE_MATRIX_HPP
-#define SLAE__DENSE_MATRIX_HPP
+#pragma once
 
 #include <vector>
 #include <cmath>
@@ -230,5 +229,3 @@ bool unitary(Dense_matrix<T> &M){
 }
     return true;
 }
-
-#endif //SLAE__DENSE_MATRIX_HPP

@@ -1,6 +1,3 @@
-//
-// Created by milica on 28.02.23.
-//
 #include "gtest/gtest.h"
 #include "../src/Dense_matrix.hpp"
 #include "../src/Householder.hpp"
